@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/Product_one.dart';
 
 import 'foodItem.dart';
 
@@ -134,19 +135,23 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 41,
             ),
-            GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-               childAspectRatio: 0.78,///height problem ////
-                children: [
-                  FoodItem("a1","Cheeseburger", "Wendy's Burger", "4.9", "assets/images/image_four.png"),
-                  FoodItem("a2","Hamburger", "Veggie Burger", "4.8", "assets/images/image_three.png"),
-                  FoodItem("a3","Hamburger", "chicken Burger", "4.6", "assets/images/image_two.png"),
-                  FoodItem('a4',"Hamburger", "Fried Chicken Burger", "4.5", "assets/images/image_one.png"),
-                ],
-
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductOne()));
+              },
+              child: GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                 childAspectRatio: 0.78,///height problem ////
+                  children: [
+                    FoodItem("a1","Cheeseburger", "Wendy's Burger", "4.9", "assets/images/image_four.png"),
+                    FoodItem("a2","Hamburger", "Veggie Burger", "4.8", "assets/images/image_three.png"),
+                    FoodItem("a3","Hamburger", "chicken Burger", "4.6", "assets/images/image_two.png"),
+                    FoodItem('a4',"Hamburger", "Fried Chicken Burger", "4.5", "assets/images/image_one.png"),
+                  ],
+              ),
             ),
             ],
               ),

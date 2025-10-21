@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Favourite_Provider.dart';
-import 'package:provider/provider.dart' show Consumer;
+import 'package:provider/provider.dart';
 
 class FoodItem extends StatelessWidget {
   // ============Item Id========================/////////
