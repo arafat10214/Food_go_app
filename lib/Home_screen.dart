@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'foodItem.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -134,16 +136,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             GridView.count(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
-               childAspectRatio: 0.62,
+               childAspectRatio: 0.78,///height problem ////
                 children: [
-                  FoodItem("Cheeseburger", "Wendy's Burger", "4.9", "assets/images/image_four.png"),
-                  FoodItem("Hamburger", "Veggie Burger", "4.8", "assets/images/image_three.png"),
-                  FoodItem("Hamburger", "chicken Burger", "4.6", "assets/images/image_two.png"),
-                  FoodItem("Hamburger", "Fried Chicken Burger", "4.5", "assets/images/image_one.png"),
+                  FoodItem("a1","Cheeseburger", "Wendy's Burger", "4.9", "assets/images/image_four.png"),
+                  FoodItem("a2","Hamburger", "Veggie Burger", "4.8", "assets/images/image_three.png"),
+                  FoodItem("a3","Hamburger", "chicken Burger", "4.6", "assets/images/image_two.png"),
+                  FoodItem('a4',"Hamburger", "Fried Chicken Burger", "4.5", "assets/images/image_one.png"),
                 ],
 
             ),
@@ -229,102 +230,4 @@ Widget CategoryChip(String text, bool selected){
         ),
       ),
   );
-}
-
-//////==============Food Item Widgets==================////////////////
-class FoodItem extends StatefulWidget {
-  final String title;
-  final String subtitle;
-  final String rating;
-  final String image;
-
-  const FoodItem(this.title, this.subtitle, this.rating, this.image, {super.key});
-
-  @override
-  State<FoodItem> createState() => _FoodItemState();
-}
-
-class _FoodItemState extends State<FoodItem> {
-  bool isFavorite = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      width: 160,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.03),
-            offset: Offset(0, 6),
-            blurRadius: 16,
-          ),
-        ],
-      ),
-      padding: EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Image.asset(widget.image,
-              height: 120,
-              width: 120,
-            ),
-          ),
-          SizedBox(
-            height: 2,
-          ),
-          Text(widget.title,style: TextStyle(
-              fontFamily: "Roboto",
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.black),
-          ),
-          Text(widget.subtitle, style: TextStyle(
-            color: Colors.grey,
-            fontWeight: FontWeight.w400,
-            fontFamily: "Roboto",
-            fontSize: 16,
-          ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.star,color: Colors.orange,),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(widget.rating,style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: "Roboto",
-                    fontSize: 16,
-                  )),
-                ],
-              ),
-
-              GestureDetector(
-                onTap: (){
-                  setState((){
-                    isFavorite=!isFavorite;
-                  });
-                },
-                child: Icon(isFavorite? Icons.favorite :Icons.favorite_border,
-                  color: isFavorite ? Colors.redAccent : Colors.black,
-                  size: 20,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }
